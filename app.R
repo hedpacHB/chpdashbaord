@@ -1170,7 +1170,60 @@ ui <- dashboardPage(
     font-size: 16px !important;
     font-weight: 700 !important;
   }
-"))
+")),
+    # ---- MOBILE RESPONSIVE TWEAKS ----
+    tags$style(HTML("
+        /* Mobile layout adjustments (phones & small tablets) */
+        @media (max-width: 991px) {
+
+          /* Make main content full-width under header */
+          .content-wrapper, .right-side {
+            margin-left: 0 !important;
+            padding: 10px 8px 40px 8px !important;
+          }
+
+          /* Sidebar should not reserve 350px on mobile */
+          .main-sidebar {
+            width: 100% !important;
+            position: relative !important;
+            height: auto !important;
+          }
+
+          /* Header title a bit smaller */
+          .main-header .logo,
+          .main-header .navbar .navbar-brand {
+            font-size: 12px !important;
+            white-space: normal !important;
+          }
+
+          /* Tabs: tighter spacing, smaller text */
+          .nav-tabs-custom > .nav-tabs > li > a {
+            padding: 6px 8px !important;
+            font-size: 12px !important;
+          }
+
+          /* Info boxes: more compact */
+          .info-box {
+            min-height: 70px !important;
+          }
+          .info-box-text {
+            font-size: 11px !important;
+          }
+          .info-box-number {
+            font-size: 14px !important;
+          }
+
+          /* Boxes: less vertical space between them */
+          .box {
+            margin-bottom: 10px !important;
+          }
+
+          /* Large H2 in Overview: scale down */
+          h2 {
+            font-size: 20px !important;
+          }
+        }
+      "))
     ),
     
     fluidRow(
