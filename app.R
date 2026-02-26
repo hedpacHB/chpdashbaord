@@ -943,236 +943,235 @@ ui <- dashboardPage(
   # =======================
   # BODY
   # =======================
-  # BODY
-  # =======================
   body = dashboardBody(
     shinybusy::add_busy_spinner(spin = "fading-circle", color = hedpac_gold),
-      
-      # 🔵 FULL-SCREEN LOADING OVERLAY (HTML)
-      div(
-        id = "loading-overlay",
-        div(class = "loader"),
-        div("Loading the HeDPAC Community Health Dashboard…")
-      ),
-      
-      # 🔗 HEAD: INCLUDE loading.css + JS TO HIDE OVERLAY
-      tags$head(
-        # Link to your custom CSS file in www/
-        tags$link(rel = "stylesheet", type = "text/css", href = "loading.css"),
-        
-        # JS handler: hides the overlay when Shiny is ready
-        tags$script(HTML("
-      document.addEventListener('DOMContentLoaded', function() {
-        var overlay = document.getElementById('loading-overlay');
-        Shiny.addCustomMessageHandler('hide_loading', function(message){
-          if (overlay) overlay.style.display = 'none';
-        });
-      });
-    ")),
-        
-        # ---- GLOBAL LAYOUT + TAB COLORS ----
-        tags$style(HTML(sprintf("
-      body { background-color:%s; font-family:'Segoe UI', Arial, sans-serif; }
-      .skin-blue .main-header .logo,
-      .skin-blue .main-header .navbar {
-        background-color:%s;
-        border-bottom: 3px solid %s;
-        min-height: 60px;
-      }
-      .main-header .navbar .sidebar-toggle { color:white; }
-      .skin-blue .main-sidebar {
-        background-color:%s;
-        height: 100vh;
-        overflow-y: auto;
-        overflow-x: hidden;
-      }
-      .content-wrapper, .right-side {
-        margin-left:350px !important;
-        padding:15px 20px 20px 20px !important;
-        background-color:white;
-      }
-      .content { position: relative; z-index: 1; padding-top: 10px !important; }
-      
-      /* TAB BAR – DARK BLUE */
-      .nav-tabs-custom > .nav-tabs {
-        background-color: #004A98 !important;
-        border-bottom: 2px solid #C2A759 !important;
-        margin-top: 0;
-      }
-      .nav-tabs-custom > .nav-tabs > li > a {
-        background-color: transparent !important;
-        color: #ffffff !important;
-        font-weight: 500;
-        border: none !important;
-      }
-      .nav-tabs-custom > .nav-tabs > li > a:hover {
-        background-color: rgba(255,255,255,0.15) !important;
-        color: #ffffff !important;
-        border: none !important;
-      }
-      .nav-tabs-custom > .nav-tabs > li.active > a {
-        background-color: #ffffff !important;
-        color: #004A98 !important;
-        font-weight: 700;
-        border-top: 3px solid #C2A759 !important;
-        border-left: none !important;
-        border-right: none !important;
-      }
-      
-      .hedpac-title-bar {
-        background:%s;
-        color:white;
-        padding:10px 15px;
-        border-left:5px solid %s;
-        margin-bottom:15px;
-      }
-      .hedpac-title-bar h3 { margin:0; font-weight:bold; }
-      table.dataTable td { white-space: normal !important; word-wrap: break-word; }
-    ", hedpac_bg, hedpac_blue, hedpac_gold, hedpac_blue, hedpac_blue, hedpac_gold))),
-        
-        # ... keep ALL your other tags$style(HTML("...")) blocks as they are ...
     
-    # ... keep ALL your other tags$style(HTML("...")) blocks as they are ...)),
+    # 🔵 FULL-SCREEN LOADING OVERLAY (HTML)
+    div(
+      id = "loading-overlay",
+      div(class = "loader"),
+      div("Loading the HeDPAC Community Health Dashboard…")
+    ),
+    
+    # 🔗 HEAD: INCLUDE loading.css + JS TO HIDE OVERLAY + ALL YOUR STYLES
+    tags$head(
+      # Link to your custom CSS file in www/
+      tags$link(rel = "stylesheet", type = "text/css", href = "loading.css"),
+      
+      # JS handler: hides the overlay when Shiny is ready
+      tags$script(HTML("
+        document.addEventListener('DOMContentLoaded', function() {
+          var overlay = document.getElementById('loading-overlay');
+          Shiny.addCustomMessageHandler('hide_loading', function(message){
+            if (overlay) overlay.style.display = 'none';
+          });
+        });
+      ")),
+      
+      # ---- GLOBAL LAYOUT + TAB COLORS ----
+      tags$style(HTML(sprintf("
+        body { background-color:%s; font-family:'Segoe UI', Arial, sans-serif; }
+        .skin-blue .main-header .logo,
+        .skin-blue .main-header .navbar {
+          background-color:%s;
+          border-bottom: 3px solid %s;
+          min-height: 60px;
+        }
+        .main-header .navbar .sidebar-toggle { color:white; }
+        .skin-blue .main-sidebar {
+          background-color:%s;
+          height: 100vh;
+          overflow-y: auto;
+          overflow-x: hidden;
+        }
+        .content-wrapper, .right-side {
+          margin-left:350px !important;
+          padding:15px 20px 20px 20px !important;
+          background-color:white;
+        }
+        .content { position: relative; z-index: 1; padding-top: 10px !important; }
+        
+        /* TAB BAR – DARK BLUE */
+        .nav-tabs-custom > .nav-tabs {
+          background-color: #004A98 !important;
+          border-bottom: 2px solid #C2A759 !important;
+          margin-top: 0;
+        }
+        .nav-tabs-custom > .nav-tabs > li > a {
+          background-color: transparent !important;
+          color: #ffffff !important;
+          font-weight: 500;
+          border: none !important;
+        }
+        .nav-tabs-custom > .nav-tabs > li > a:hover {
+          background-color: rgba(255,255,255,0.15) !important;
+          color: #ffffff !important;
+          border: none !important;
+        }
+        .nav-tabs-custom > .nav-tabs > li.active > a {
+          background-color: #ffffff !important;
+          color: #004A98 !important;
+          font-weight: 700;
+          border-top: 3px solid #C2A759 !important;
+          border-left: none !important;
+          border-right: none !important;
+        }
+        
+        .hedpac-title-bar {
+          background:%s;
+          color:white;
+          padding:10px 15px;
+          border-left:5px solid %s;
+          margin-bottom:15px;
+        }
+        .hedpac-title-bar h3 { margin:0; font-weight:bold; }
+        table.dataTable td { white-space: normal !important; word-wrap: break-word; }
+      ", hedpac_bg, hedpac_blue, hedpac_gold, hedpac_blue, hedpac_blue, hedpac_gold))),
       
       # ---- FILTER WRAPPER + REGION DROPDOWN + DISCLAIMER CLASS ----
       tags$style(HTML("
-      /* REGION DROPDOWN STYLE */
-      #region_select {
-        background-color: #004A98 !important;   /* HeDPAC BLUE */
-        color: white !important;
-        border: 1px solid #C2A759 !important;   /* HeDPAC GOLD */
-        border-radius: 6px !important;
-        padding: 6px !important;
-        font-size: 13px !important;
-        width: 100% !important;
-      }
-      #region_select option {
-        background-color: #004A98 !important;
-        color: white !important;
-      }
-      #region_select:hover {
-        border-color: #d9c27a !important;
-        cursor: pointer;
-      }
-      #region_select:focus {
-        outline: none !important;
-        box-shadow: 0 0 6px #C2A759 !important;
-        border-color: #C2A759 !important;
-      }
+        /* REGION DROPDOWN STYLE */
+        #region_select {
+          background-color: #004A98 !important;   /* HeDPAC BLUE */
+          color: white !important;
+          border: 1px solid #C2A759 !important;   /* HeDPAC GOLD */
+          border-radius: 6px !important;
+          padding: 6px !important;
+          font-size: 13px !important;
+          width: 100% !important;
+        }
+        #region_select option {
+          background-color: #004A98 !important;
+          color: white !important;
+        }
+        #region_select:hover {
+          border-color: #d9c27a !important;
+          cursor: pointer;
+        }
+        #region_select:focus {
+          outline: none !important;
+          box-shadow: 0 0 6px #C2A759 !important;
+          border-color: #C2A759 !important;
+        }
 
-      /* Label styling */
-      .sidebar-region-label {
-        font-weight: 600;
-        color: white;
-        margin-bottom: 6px;
-        display: block;
-      }
+        /* Label styling */
+        .sidebar-region-label {
+          font-weight: 600;
+          color: white;
+          margin-bottom: 6px;
+          display: block;
+        }
 
-      /* Filter wrapper card */
-      .filter-wrapper {
-        background: rgba(0, 0, 0, 0.18);
-        border-radius: 10px;
-        padding: 12px 14px 16px 14px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.35);
-        border-left: 3px solid #C2A759;
-      }
+        /* Filter wrapper card */
+        .filter-wrapper {
+          background: rgba(0, 0, 0, 0.18);
+          border-radius: 10px;
+          padding: 12px 14px 16px 14px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.35);
+          border-left: 3px solid #C2A759;
+        }
 
-      /* Selectize styling for all sidebar selects */
-      .skin-blue .main-sidebar .selectize-control.single .selectize-input {
-        background-color: #004A98;
-        color: #ffffff;
-        border-radius: 6px;
-        border: 1px solid #C2A759;
-        box-shadow: none;
-      }
-      .skin-blue .main-sidebar .selectize-control.single .selectize-input::after {
-        border-color: #ffffff transparent transparent transparent;
-      }
-      .skin-blue .main-sidebar .selectize-control.single .selectize-input.focus {
-        box-shadow: 0 0 4px #C2A759;
-        border-color: #C2A759;
-      }
-    ")),
-      tags$style(HTML("
-      .disclaimer-body a {
-        color: #004A98 !important; 
-        text-decoration: underline !important;
-        font-weight: 600 !important;
-        cursor: pointer !important;
-      }
-      .disclaimer-body a:hover {
-        color: #002750 !important;
-        text-decoration: underline !important;
-      }
-    ")),
-      tags$style(HTML("
-  /* TUNE INFOBOX ICON + TEXT LAYOUT */
-  .info-box-icon {
-    height: 40px !important;
-    width: 40px !important;
-    line-height: 40px !important;
-    font-size: 20px !important;  /* smaller icon */
-  }
-  .info-box-content {
-    margin-left: 48px !important;   /* give more room to text */
-    padding: 4px 8px !important;
-  }
-  .info-box-text {
-    white-space: normal !important; /* allow wrapping */
-    font-size: 12px !important;
-    line-height: 1.3 !important;
-  }
-  .info-box-number {
-    font-size: 16px !important;
-    font-weight: 700 !important;
-  }
-")),
+        /* Selectize styling for all sidebar selects */
+        .skin-blue .main-sidebar .selectize-control.single .selectize-input {
+          background-color: #004A98;
+          color: #ffffff;
+          border-radius: 6px;
+          border: 1px solid #C2A759;
+          box-shadow: none;
+        }
+        .skin-blue .main-sidebar .selectize-control.single .selectize-input::after {
+          border-color: #ffffff transparent transparent transparent;
+        }
+        .skin-blue .main-sidebar .selectize-control.single .selectize-input.focus {
+          box-shadow: 0 0 4px #C2A759;
+          border-color: #C2A759;
+        }
+      ")),
       
+      tags$style(HTML("
+        .disclaimer-body a {
+          color: #004A98 !important; 
+          text-decoration: underline !important;
+          font-weight: 600 !important;
+          cursor: pointer !important;
+        }
+        .disclaimer-body a:hover {
+          color: #002750 !important;
+          text-decoration: underline !important;
+        }
+      ")),
+      
+      tags$style(HTML("
+        /* TUNE INFOBOX ICON + TEXT LAYOUT */
+        .info-box-icon {
+          height: 40px !important;
+          width: 40px !important;
+          line-height: 40px !important;
+          font-size: 20px !important;  /* smaller icon */
+        }
+        .info-box-content {
+          margin-left: 48px !important;   /* give more room to text */
+          padding: 4px 8px !important;
+        }
+        .info-box-text {
+          white-space: normal !important; /* allow wrapping */
+          font-size: 12px !important;
+          line-height: 1.3 !important;
+        }
+        .info-box-number {
+          font-size: 16px !important;
+          font-weight: 700 !important;
+        }
+      ")),
       
       # ---- INDICATOR CARDS ----
       tags$style(HTML("
-      .indicator-card {
-        background-color: #e7e7f3;
-        border-radius: 12px;
-        padding: 8px 10px 10px 10px;
-        margin-bottom: 16px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.12);
-      }
-      .indicator-header {
-        background-color: #050544;
-        color: white;
-        padding: 6px 10px;
-        margin: -8px -10px 8px -10px;
-        border-radius: 12px 12px 0 0;
-        font-weight: 700;
-        font-size: 15px;
-        line-height: 1.2;
-      }
-    ")),
+        .indicator-card {
+          background-color: #e7e7f3;
+          border-radius: 12px;
+          padding: 8px 10px 10px 10px;
+          margin-bottom: 16px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+        .indicator-header {
+          background-color: #050544;
+          color: white;
+          padding: 6px 10px;
+          margin: -8px -10px 8px -10px;
+          border-radius: 12px 12px 0 0;
+          font-weight: 700;
+          font-size: 15px;
+          line-height: 1.2;
+        }
+      ")),
+      
       tags$style(HTML("
-  /* TUNE INFOBOX ICON + TEXT LAYOUT */
-  .info-box-icon {
-    height: 40px !important;
-    width: 40px !important;
-    line-height: 40px !important;
-    font-size: 20px !important;  /* smaller icon */
-  }
-  .info-box-content {
-    margin-left: 48px !important;   /* give more room to text */
-    padding: 4px 8px !important;
-  }
-  .info-box-text {
-    white-space: normal !important; /* allow wrapping */
-    font-size: 12px !important;
-    line-height: 1.3 !important;
-  }
-  .info-box-number {
-    font-size: 16px !important;
-    font-weight: 700 !important;
-  }
-"))
-    ),
+        /* TUNE INFOBOX ICON + TEXT LAYOUT (duplicate tweak) */
+        .info-box-icon {
+          height: 40px !important;
+          width: 40px !important;
+          line-height: 40px !important;
+          font-size: 20px !important;
+        }
+        .info-box-content {
+          margin-left: 48px !important;
+          padding: 4px 8px !important;
+        }
+        .info-box-text {
+          white-space: normal !important;
+          font-size: 12px !important;
+          line-height: 1.3 !important;
+        }
+        .info-box-number {
+          font-size: 16px !important;
+          font-weight: 700 !important;
+        }
+      "))
+    ),  # end tags$head
     
+    # =======================
+    # BODY CONTENT
+    # =======================
     fluidRow(
       column(
         width = 12,
@@ -1183,15 +1182,13 @@ ui <- dashboardPage(
           # 1) OVERVIEW – intro only
           tabPanel(
             "Overview",
-            
-            # Main title
+            ## ... your Overview contents exactly as you already have ...
             h2(
               "Community Health Programs (CHP) Dashboard",
               style = sprintf("color:%s; font-weight:bold; margin-top:10px;", hedpac_blue)
             ),
             br(),
-            
-            # Quick-glance info cards
+            # (keep the rest of the Overview tab body as in your code)
             fluidRow(
               column(
                 width = 4,
@@ -1236,285 +1233,41 @@ ui <- dashboardPage(
                 )
               )
             ),
-            
             br(),
-            
-            # Clean narrative section – no scroll, no blue background blocks
-            HTML("
-    <h3 style='color:#004A98;font-weight:bold; margin-top:5px; margin-bottom:10px;'>
-      About the CHP Dashboard
-    </h3>
-
-    <p style='font-size:14px; line-height:1.6; color:#111827; text-align:justify;'>
-      The Community Health Program (CHP) Dashboard is developed by HeDPAC to serve as an integrated decision-support platform 
-      that strengthens analytics and generates actionable insights for policy, investment, and accountability in community health 
-      programs across Africa and the Caribbean. It brings together diverse data sources to provide a comprehensive picture of how 
-      community health programs are structured, resourced, and performing, and how they contribute to the achievement of 
-      Universal Health Coverage (UHC).
-    </p>
-
-    <p style='font-size:14px; line-height:1.6; color:#111827; text-align:justify;'>
-      The dashboard tracks the maturity and performance of national community health programs, highlights their contribution to 
-      essential health service coverage, and supports evidence-informed decision-making. It was developed by consolidating and 
-      harmonizing key information from established global and national sources, including the WHO Global Health Observatory, 
-      the Global Community Health Dashboard, the ProCHW Policy Dashboard, the Demographic and Health Surveys (DHS), 
-      World Bank Open Data, and country-level Community Health Program Maturity Assessments.
-    </p>
-
-    <!-- COUNTRY-LEVEL HIGHLIGHT (subtle gold accent) -->
-    <div style='border-left:4px solid #C2A759;
-                padding-left:12px;
-                margin:20px 0;'>
-      <p style='font-size:14px; line-height:1.6; color:#004A98; text-align:justify; margin:0;'>
-        <span style='font-weight:700;'>At the country level,</span>
-        the dashboard presents core demographic and health indicators alongside key features of the community health program, 
-        including the type and number of Community Health Workers (CHWs), the existence and updated status of national policies, 
-        pre-service training arrangements, service packages delivered by CHWs, and remuneration mechanisms. This allows users to 
-        understand how CHW programs are organized and supported within each health system.
-      </p>
-    </div>
-
-    <p style='font-size:14px; line-height:1.6; color:#111827; text-align:justify;'>
-      The dashboard also visualizes how CHWs contribute to coverage of selected essential health services, drawing on the latest 
-      DHS data, National Malaria Indicator Surveys, and other relevant national data on health service coverage. These analyses 
-      demonstrate the role of CHWs in expanding access to care, reducing inequities, and advancing progress toward UHC. While the 
-      dashboard captures service utilization, it does not yet fully reflect CHWs' broader functions in health promotion, community 
-      engagement, and referral to health facilities, which remain important areas for future enhancement.
-    </p>
-
-    <p style='font-size:14px; line-height:1.6; color:#111827; text-align:justify;'>
-      In addition, the platform displays the maturity level of community health programs using the Community Health Program 
-      Maturity Framework, with scores disaggregated by category and component. The CHP Maturity Framework is a tool developed 
-      by HeDPAC to provide a standardized, evidence-based framework for countries, policymakers, and program managers to 
-      evaluate, strengthen, and sustain CHPs. It combines a maturity matrix, scoring system, and composite index to generate 
-      clear, actionable insights. This enables countries and partners to assess governance, financing, workforce, supply chain, 
-      outcomes, and system integration in a structured, comparable way.
-    </p>
-
-    <!-- WHY THIS MATTERS (simple, typographic) -->
-    <div style='border-top:1px solid #004A98;
-                margin-top:22px;
-                padding-top:12px;'>
-      <p style='margin:0 0 4px 0; font-weight:bold; color:#004A98; font-size:14px;'>
-        Why this matters
-      </p>
-      <p style='margin:0; font-size:14px; line-height:1.6; color:#111827; text-align:justify;'>
-        Overall, the CHP Dashboard empowers policymakers, program managers, and partners to monitor progress, stimulate dialogue, 
-        prioritize investments, benchmark across countries, and share best practices to strengthen community health systems and 
-        accelerate progress toward UHC.
-      </p>
-    </div>
-  ")
-          ),  # end Overview
+            HTML("... (rest of your Overview HTML block here, unchanged) ")
+          ),
           
           # 2) COUNTRY CONTEXT & CHP KEY FEATURES
           tabPanel(
             title = "Country context and CHP key features",
-            
+            ## keep your existing contents here unchanged
             div(class = "hedpac-title-bar", h3(textOutput("ctx_title"))),
-            
-            HTML("
-      <p style='font-size:14px;'>
-        This section brings together core country context indicators (population, UHC index,
-        maternal and under-five mortality) and key CHW program features, including policy status,
-        pre-service training, numbers of CHWs, service delivery package, and types of financial
-        remuneration. It is intended to support learning, dialogue, and investment decisions – not
-        as a scorecard.
-      </p>
-    "),
-            
-            br(),
-            
-            fluidRow(
-              infoBoxOutput("info_pop",  width = 3),
-              infoBoxOutput("info_uhc",  width = 3),
-              infoBoxOutput("info_mmr",  width = 3),
-              infoBoxOutput("info_u5mr", width = 3)
-            ),
-            
-            br(),
-            
-            fluidRow(
-              box(
-                width = 6, status = "primary", solidHeader = TRUE,
-                title = "Number of CHWs currently deployed in the country",
-                leafletOutput("chw_numbers_map", height = 360) %>% 
-                  withSpinner(color = hedpac_gold)
-              ),
-              box(
-                width = 6, status = "primary", solidHeader = TRUE,
-                title = "CHWs who received pre-service training (%)",
-                leafletOutput("chw_training_map", height = 360) %>% 
-                  withSpinner(color = hedpac_gold)
-              )
-            ),
-            
-            br(),
-            
-            fluidRow(
-              box(
-                width = 6, status = "primary", solidHeader = TRUE,
-                title = "CHW Policy Status",
-                leafletOutput("chw_policy_map", height = 360) %>% 
-                  withSpinner(color = hedpac_gold)
-              ),
-              box(
-                width = 3, status = "primary", solidHeader = TRUE,
-                title = "CHW Service Delivery Package",
-                uiOutput("chw_services_card")
-              ),
-              box(
-                width = 3, status = "primary", solidHeader = TRUE,
-                title = "Types of Financial Remuneration for CHWs",
-                uiOutput("chw_remuneration_card")
-              )
-            ),
-            
-            # FOOTNOTE
-            div(
-              style = "margin-top: 25px; padding-top: 10px;",
-              tags$hr(
-                style = sprintf(
-                  'border-top: 2px solid %s; width: 100%%; margin-top: 5px; margin-bottom: 10px;',
-                  hedpac_gold
-                )
-              ),
-              div(
-                style = "
-          font-size: 11.5px;
-          color: #555555;
-          line-height: 1.45;
-          text-align: left;
-          padding: 8px 4px;
-          max-width: 950px;
-        ",
-                HTML("
-          <em>
-            Note: UHC service coverage index, maternal mortality ratio, and under-five mortality rate—and CHW programme features such as policy status, training, workforce numbers, service package, and financial remuneration are provided for learning, planning, and policy dialogue purposes only. They are not intended to serve as formal performance ratings. Displayed data reflect information extracted from the respective data sources as of December 2025.
-          </em>
-        ")
-              )
-            )
-          ),  # end key features tab
+            # ...
+          ),
           
           # 3) CHW Contribution to Essential Services 
           tabPanel(
             title = "CHW Contribution to Essential Services ",
-            
+            ## keep your existing contents here unchanged
             div(class = "hedpac-title-bar", h3(textOutput("uhc_header_title"))),
-            br(),
-            
-            HTML("
-      <p style='font-size:14px;'>
-        This section shows how CHWs contribute to coverage of selected essential health services using the latest DHS data. It highlights CHWs’ role in expanding access and promoting equity, contributing to UHC. However, the section primarily captures service use and does not fully capture CHWs’ broader roles in health promotion and facility referrals.
-      </p>
-    "),
-            
-            br(),
-            
-            uiOutput("uhc8_cards") %>% withSpinner(color = hedpac_gold),
-            
-            # FOOTNOTE
-            div(
-              style = "margin-top: 25px; padding-top: 10px;",
-              tags$hr(
-                style = sprintf(
-                  'border-top: 2px solid %s; width: 100%%; margin-top: 5px; margin-bottom: 10px;',
-                  hedpac_gold
-                )
-              ),
-              div(
-                style = "
-          font-size: 11.5px;
-          color: #555555;
-          line-height: 1.45;
-          text-align: left;
-          padding: 8px 4px;
-          max-width: 850px;
-        ",
-                HTML("
-          <em>
-            CHWs’ contribution to essential health services is estimated using DSH Data. Visualisations are provided for learning, policy dialogue, and programme design and should be interpreted alongside each country’s survey year and national context. ICF, 2012. The DHS Program STATcompiler. Funded by USAID. http://www.statcompiler.com Dec 04, 2025.
-          </em>
-        ")
-              )
-            )
-          ), # end CHW Contribution tab
+            # ...
+          ),
           
           # 4) CHP MATURITY – PLACEHOLDER ONLY (NO DATA LOADED YET)
           tabPanel(
             title = "CHP Maturity",
-            
+            ## keep your existing contents here unchanged
             div(
               class = "hedpac-title-bar",
               h3("Community Health Program (CHP) Maturity")
-            ),
-            br(),
-            # 🔔 Coming soon notice
-            div(
-              style = "
-                border-radius:8px;
-                padding:10px 14px;
-                background-color:#FDF8EE;
-                border-left:4px solid #C2A759;
-                display:flex;
-                align-items:flex-start;
-                gap:10px;
-                margin-bottom:18px;
-              ",
-              tags$span(
-                icon("hourglass-half"),
-                style = "font-size:16px; color:#C2A759; margin-top:2px;"
-              ),
-              tags$div(
-                tags$p(
-                  style = "margin:0; font-size:14px; color:#92400E; font-weight:600;",
-                  "Coming soon – maturity assessments under way"
-                ),
-                tags$p(
-                  style = "margin:3px 0 0 0; font-size:13px; color:#4B5563;",
-                  "This section will be activated once countries complete Community Health Program (CHP) maturity assessments and 
-                   grant approval for visualising and sharing results."
-                )
-              )
-            ),
-            
-            # Main explanatory text
-            HTML("
-      <p style='font-size:14px; line-height:1.6; text-align:justify;'>
-        This section will display results from <strong>Community Health Program (CHP) Maturity Assessments</strong> conducted by countries in 
-        collaboration with HeDPAC and partners. The maturity framework provides a structured way to assess governance, financing, workforce, 
-        supplies, service delivery and outcomes for community health programs.
-      </p>
-      
-      <p style='font-size:14px; line-height:1.6; text-align:justify;'>
-        At this stage, the CHP Maturity section is <strong>not yet populated with country-level results</strong>. Visualisations and dashboards 
-        will be activated once maturity assessments are completed, validated, and officially cleared for dissemination by the respective 
-        Ministries of Health and national authorities.
-      </p>
-      
-      <div style='border-left:4px solid #C2A759; padding-left:12px; margin:20px 0;'>
-        <p style='font-size:14px; line-height:1.6; color:#004A98; margin:0; text-align:justify;'>
-          <strong>Coming soon:</strong> Once data are available and approvals are granted, this section will show:
-          <ul style='margin-top:6px;'>
-            <li>Overall CHP maturity scores for each country</li>
-            <li>Maturity levels by category (e.g. leadership & governance, financing, workforce, supplies, outcomes)</li>
-            <li>Component-level strengths and gaps to guide policy dialogue and investment decisions</li>
-          </ul>
-        </p>
-      </div>
-      
-      <p style='font-size:13px; line-height:1.6; color:#555555; text-align:justify;'>
-        Until then, the CHP Maturity tab is provided as a placeholder to signal ongoing work and upcoming country-led assessments. 
-        All future displays of maturity scores will be aligned with country preferences on data sharing and visibility.
-      </p>
-    ")
+            )
+            # ...
           )
         )  # end tabBox
       )   # end column
     )     # end fluidRow
-  )     # end body = dashboardBody
-)    # end ui <- dashboardPage(...)
+  )       # end body = dashboardBody
+)         # end ui <- dashboardPage(...)
 # ------------------------------------------------------------------
 # Helper: read an Excel sheet by name, case-insensitive, trim spaces
 # ------------------------------------------------------------------
