@@ -1,0 +1,33 @@
+/* Full-page overlay */
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #003366; /* HeDPAC blue */
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 20px;
+}
+
+/* Gold spinner */
+.loader {
+  border: 8px solid rgba(255,255,255,0.3);
+  border-top: 8px solid #d4af37; /* HeDPAC gold */
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  animation: spin 1.4s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

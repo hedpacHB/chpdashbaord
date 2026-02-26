@@ -947,10 +947,31 @@ ui <- dashboardPage(
   # =======================
   body = dashboardBody(
     shinybusy::add_busy_spinner(spin = "fading-circle", color = hedpac_gold),
-   
-    tags$head(
-      # ---- GLOBAL LAYOUT + TAB COLORS ----
-      tags$style(HTML(sprintf("
+      
+      # 🔵 FULL-SCREEN LOADING OVERLAY (HTML)
+      div(
+        id = "loading-overlay",
+        div(class = "loader"),
+        div("Loading the HeDPAC Community Health Dashboard…")
+      ),
+      
+      # 🔗 HEAD: INCLUDE loading.css + JS TO HIDE OVERLAY
+      tags$head(
+        # Link to your custom CSS file in www/
+        tags$link(rel = "stylesheet", type = "text/css", href = "loading.css"),
+        
+        # JS handler: hides the overlay when Shiny is ready
+        tags$script(HTML("
+      document.addEventListener('DOMContentLoaded', function() {
+        var overlay = document.getElementById('loading-overlay');
+        Shiny.addCustomMessageHandler('hide_loading', function(message){
+          if (overlay) overlay.style.display = 'none';
+        });
+      });
+    ")),
+        
+        # ---- GLOBAL LAYOUT + TAB COLORS ----
+        tags$style(HTML(sprintf("
       body { background-color:%s; font-family:'Segoe UI', Arial, sans-serif; }
       .skin-blue .main-header .logo,
       .skin-blue .main-header .navbar {
@@ -1008,6 +1029,10 @@ ui <- dashboardPage(
       .hedpac-title-bar h3 { margin:0; font-weight:bold; }
       table.dataTable td { white-space: normal !important; word-wrap: break-word; }
     ", hedpac_bg, hedpac_blue, hedpac_gold, hedpac_blue, hedpac_blue, hedpac_gold))),
+        
+        # ... keep ALL your other tags$style(HTML("...")) blocks as they are ...
+    
+    # ... keep ALL your other tags$style(HTML("...")) blocks as they are ...)),
       
       # ---- FILTER WRAPPER + REGION DROPDOWN + DISCLAIMER CLASS ----
       tags$style(HTML("
@@ -1489,7 +1514,7 @@ ui <- dashboardPage(
       )   # end column
     )     # end fluidRow
   )     # end body = dashboardBody
-)     # end ui <- dashboardPage(...)
+)    # end ui <- dashboardPage(...)
 # ------------------------------------------------------------------
 # Helper: read an Excel sheet by name, case-insensitive, trim spaces
 # ------------------------------------------------------------------
@@ -3134,7 +3159,11 @@ server <- function(input, output, session) {
       </p>
     ')
   })
-  
+  observe({
+    session$onFlushed(function() {
+      session$sendCustomMessage("hide_loading", TRUE)
+    }, once = TRUE)
+  })
   }  # <-- closes server <- function(...)
 
 # ============================================================
