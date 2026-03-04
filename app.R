@@ -284,21 +284,21 @@ uhc8_bar_labels <- c(
 # Tooltip definitions when hovering on the group title bar
 uhc8_definitions <- c(
   "Contraceptive use" =
-    "Contraception Use: Percentage of women who use any contraceptive method. Source of modern contraceptive methods.",
+    "Contraception Use: Percentage of women who use any contraceptive method.",
   "ANC" =
-    "Antenatal care: Percentage receiving antenatal care from a skilled provider. Antenatal care provider.",
+    "Antenatal care: Percentage receiving antenatal care from a skilled provider.",
   "Postnatal mothers" =
-    "Mother's first postnatal check: Percentage of women with a postnatal check during the first 2 days after birth. Type of health provider of mothers' first postnatal checkup.",
+    "Mother's first postnatal check: Percentage of women with a postnatal check during the first 2 days after birth.",
   "Postnatal newborns" =
-    "Newborn's first postnatal check: Percentage of births with a postnatal check during the first 2 days after birth. Type of health provider of newborn’s first postnatal check.",
+    "Newborn's first postnatal check: Percentage of births with a postnatal check during the first 2 days after birth.",
   "ARI" =
-    "Advice or treatment for children with ARI: Among children under age 5 with symptoms of ARI, percentage for whom advice or treatment was sought. Among children with symptoms of ARI for whom advice or treatment was sought from different sources.",
+    "Advice or treatment for children with ARI: Among children under age 5 with symptoms of ARI, percentage for whom advice or treatment was sought.",
   "Fever" =
-    "Advice or treatment for children with fever: Among children under age 5 with fever, percentage for whom advice or treatment was sought. Among children with fever for whom advice or treatment was sought from different sources.",
+    "Advice or treatment for children with fever: Among children under age 5 with fever, percentage for whom advice or treatment was sought.",
   "Diarrhea" =
-    "Advice or treatment for children with diarrhea: Among children under age 5 with diarrhea, percentage for whom advice or treatment was sought. Among children with diarrhea for whom advice or treatment was sought from different sources.",
+    "Advice or treatment for children with diarrhea: Among children under age 5 with diarrhea, percentage for whom advice or treatment was sought.",
   "ITN" =
-    "Household possession of mosquito nets: Percentage of households owning at least one insecticide-treated net (ITN). Source of mosquito nets."
+    "Household possession of mosquito nets: Percentage of households owning at least one insecticide-treated net (ITN)."
 )
 
 # Donut chart tooltips
@@ -859,9 +859,7 @@ ui <- dashboardPage(
             
             tags$p(HTML(
               "<strong>Note:</strong> This prototype dashboard includes data for 
-               <strong>Africa</strong> and <strong>Caribbean</strong> countries only. 
-               Visualisations are intended for learning, policy dialogue, and advocacy – 
-               they do not represent official performance ratings."
+               <strong>Africa</strong> and <strong>Caribbean</strong> countries only."
             )),
             
             tags$p(style = "font-weight:600; margin-bottom:4px;", "Data Sources:"),
@@ -912,7 +910,7 @@ ui <- dashboardPage(
             tags$p(
               "The boundaries, names, and designations shown on these maps do not imply any expression ",
               "of opinion on the part of HeDPAC regarding the legal status of any country, territory, or area, ",
-              "nor concerning the delimitation of its borders. All geographic information is provided for reference only."
+              "nor concerning the delination of its borders. All geographic information is provided for reference only."
             )
           )
         )
@@ -1537,7 +1535,7 @@ server <- function(input, output, session) {
           textsize = "11px",
           style = list(
             "font-weight" = "bold",
-            "color"       = "#7c0a02",
+            "color"       = "#000000",
             "text-shadow" = "1px 1px 2px #ffffff",
             "background"  = "transparent",
             "padding"     = "0px",
@@ -1692,7 +1690,7 @@ server <- function(input, output, session) {
       map_df <- world_sf %>%
         dplyr::left_join(pol, by = c("name_long" = "Country")) %>%
         dplyr::mutate(
-          border_col = dplyr::if_else(name_long == sel, "#7c0a02", "#555555"),
+          border_col = dplyr::if_else(name_long == sel, "#7c0a02", "#000000"),
           border_w   = dplyr::if_else(name_long == sel, 2.5, 0.5)
         )
       
@@ -1701,9 +1699,9 @@ server <- function(input, output, session) {
       if (length(status_levels) == 0) status_levels <- "Unknown"
       
       pal <- colorFactor(
-        palette  = colorRampPalette(c("#00264D", "#0055A4", "#66B2FF"))(length(status_levels)),
+        palette  = colorRampPalette(c("#0052a7", "#0066ce", "#cccccc"))(length(status_levels)),
         domain   = status_levels,
-        na.color = "#cccccc"
+        na.color = "#ffffff"
       )
       
       # Simple region-based zoom
