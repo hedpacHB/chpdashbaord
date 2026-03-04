@@ -1537,7 +1537,7 @@ server <- function(input, output, session) {
           textsize = "11px",
           style = list(
             "font-weight" = "bold",
-            "color"       = "#7c0a02",
+            "color"       = "#000000",
             "text-shadow" = "1px 1px 2px #ffffff",
             "background"  = "transparent",
             "padding"     = "0px",
@@ -1692,7 +1692,7 @@ server <- function(input, output, session) {
       map_df <- world_sf %>%
         dplyr::left_join(pol, by = c("name_long" = "Country")) %>%
         dplyr::mutate(
-          border_col = dplyr::if_else(name_long == sel, "#7c0a02", "#555555"),
+          border_col = dplyr::if_else(name_long == sel, "#7c0a02", "#000000"),
           border_w   = dplyr::if_else(name_long == sel, 2.5, 0.5)
         )
       
@@ -1701,9 +1701,9 @@ server <- function(input, output, session) {
       if (length(status_levels) == 0) status_levels <- "Unknown"
       
       pal <- colorFactor(
-        palette  = colorRampPalette(c("#00264D", "#0055A4", "#66B2FF"))(length(status_levels)),
+        palette  = colorRampPalette(c("#0052a7", "#0066ce", "#cccccc"))(length(status_levels)),
         domain   = status_levels,
-        na.color = "#cccccc"
+        na.color = "#ffffff"
       )
       
       # Simple region-based zoom
