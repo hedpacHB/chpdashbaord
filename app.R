@@ -1508,27 +1508,6 @@ ui <- dashboardPage(
         supplies, service delivery and outcomes for community health programs.
       </p>
       
-      <p style='font-size:14px; line-height:1.6; text-align:justify;'>
-        At this stage, the CHP Maturity section is <strong>not yet populated with country-level results</strong>. Visualisations and dashboards 
-        will be activated once maturity assessments are completed, validated, and officially cleared for dissemination by the respective 
-        Ministries of Health and national authorities.
-      </p>
-      
-      <div style='border-left:4px solid #C2A759; padding-left:12px; margin:20px 0;'>
-        <p style='font-size:14px; line-height:1.6; color:#004A98; margin:0; text-align:justify;'>
-          <strong>Coming soon:</strong> Once data are available and approvals are granted, this section will show:
-          <ul style='margin-top:6px;'>
-            <li>Overall CHP maturity scores for each country</li>
-            <li>Maturity levels by category (e.g. leadership & governance, financing, workforce, supplies, outcomes)</li>
-            <li>Component-level strengths and gaps to guide policy dialogue and investment decisions</li>
-          </ul>
-        </p>
-      </div>
-      
-      <p style='font-size:13px; line-height:1.6; color:#555555; text-align:justify;'>
-        Until then, the CHP Maturity tab is provided as a placeholder to signal ongoing work and upcoming country-led assessments. 
-        All future displays of maturity scores will be aligned with country preferences on data sharing and visibility.
-      </p>
     ")
           )
         )
