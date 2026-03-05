@@ -895,7 +895,7 @@ ui <- dashboardPage(
             ),
             
             tags$p(
-              "Data for Universal Health Coverage (UHC) indicators—including maternal mortality ratio, ",
+              "Data for Universal Health Coverage (UHC) indicators including maternal mortality ratio, ",
               "under-five mortality, UHC service coverage, and other key service-delivery indicators were accessed ",
               "directly through the WHO Global Health Observatory (GHO) API and complemented by the latest DHS surveys ",
               "where applicable."
