@@ -873,6 +873,14 @@ ui <- dashboardPage(
               ),
               tags$li(
                 tags$a(
+                  href   = 'https://databank.worldbank.org/',
+                  target = '_blank',
+                  "World Bank – World Development Indicators"
+                )
+              ),
+              
+              tags$li(
+                tags$a(
                   href   = 'https://dhsprogram.com',
                   target = '_blank',
                   "Demographic and Health Surveys (DHS) Program"
@@ -902,7 +910,7 @@ ui <- dashboardPage(
             ),
             
             tags$p(
-              "Please interpret all results with consideration for each country's survey year, data availability, ",
+              " This dashboard compiles publicly available data from multiple global and national sources. Data ownership remains with the original institutions and governments that produced the data. The dashboard is intended for visualization and analytical purposes only and does not replace official national statistics.Please interpret all results with consideration for each country's survey year, data availability, ",
               "and national context, as reporting cycles vary across countries."
             ),
             
@@ -1507,8 +1515,7 @@ ui <- dashboardPage(
         collaboration with HeDPAC and partners. The maturity framework provides a structured way to assess governance, financing, workforce, 
         supplies, service delivery and outcomes for community health programs.
       </p>
-      
-    ")
+          ")
           )
         )
       )
