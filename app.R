@@ -802,7 +802,7 @@ ui <- dashboardPage(
         )
       ),
       span(
-        "Community Health Program (CHP) Dashboard – Africa & Caribbean",
+        "Community Health Program Dashboard",
         style = "font-size:16px; font-weight:bold; color:white; vertical-align:middle;"
       )
     ),
