@@ -1420,103 +1420,103 @@ ui <- dashboardPage(
             )
           ),
           
-          # 4) CHP MATURITY
-          tabPanel(
-            title = "CHP Maturity",
-            
-            div(
-              class = "hedpac-title-bar",
-              h3("Community Health Program (CHP) Maturity")
-            ),
-            
-            br(),
-            h3(
-              "About the CHP Maturity Framework",
-              style = paste0(
-                "color:", hedpac_blue, 
-                "; font-weight:bold; margin-top:5px; margin-bottom:10px;"
-              )
-            ),
-            
-            HTML("
-  <p style='font-size:14px; line-height:1.6; text-align:justify;'>
-  <strong>What:</strong> The Community Health Program (CHP) Maturity Framework is a standardized, evidence-based 
-  assessment tool used to evaluate the institutionalization and performance of national community health programs. 
-  It combines a maturity matrix, scoring methodology, and a composite index to assess different dimensions of 
-  community health systems. The framework generates structured insights that help countries understand the current 
-  maturity level of their programs and identify areas requiring strengthening.
-  </p>
-
-  <p style='font-size:14px; line-height:1.6; text-align:justify;'>
-  <strong>Why:</strong> The framework helps countries identify policy and implementation gaps, benchmark progress 
-  against global best practices, and prioritize strategic actions to strengthen community health systems. By 
-  providing a structured and comparable approach, it supports evidence-based decision making, more efficient 
-  resource allocation, and measurable improvements in the quality, sustainability, and performance of community 
-  health service delivery. It also promotes cross-country learning and multisectoral collaboration, recognizing 
-  that community health outcomes are influenced by sectors such as education, civil service, agriculture, water 
-  and sanitation, economy, and social protection.
-  </p>
-
-  <p style='font-size:14px; line-height:1.6; text-align:justify;'>
-  <strong>Who:</strong> The CHP Maturity Framework is used by countries, policymakers, ministries of health, civil 
-  service institutions, and community health program managers, in collaboration with HeDPAC and other technical 
-  and development partners. The MOH-led assessment process involves inclusive consultations and stakeholder 
-  validation, including health workers, government institutions, and other relevant sectors.
-  </p>
-
-  <p style='font-size:14px; line-height:1.6; text-align:justify;'>
-  <strong>When:</strong> CHP Maturity Assessments are conducted periodically as part of national community health 
-  program reviews or reform processes, particularly when countries are planning system strengthening initiatives, 
-  workforce reforms, or monitoring progress toward universal health coverage (UHC) and stronger primary health 
-  care systems.
-  </p>
-
-  <p style='font-size:14px; line-height:1.6; text-align:justify;'>
-  <strong>How:</strong> Countries conduct the assessment using the CHP Maturity Framework tools, which include 
-  structured maturity levels, indicators, and scoring criteria. The process involves evidence review, 
-  multi-stakeholder consultations, and validation workshops to ensure accuracy and country ownership. Results are 
-  analyzed through the scoring system and composite index, producing a clear maturity profile that guides 
-  strategic planning, policy reforms, and program improvement efforts.
-  </p>
-  "),
-            
-            br(),
-            
-            div(
-              style = "
-      border-radius:8px;
-      padding:10px 14px;
-      background-color:#FDF8EE;
-      border-left:4px solid #C2A759;
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      margin-bottom:18px;
-    ",
-              tags$span(
-                icon("hourglass-half"),
-                style = "font-size:16px; color:#C2A759; margin-top:2px;"
-              ),
-              tags$div(
-                tags$p(
-                  style = "margin:0; font-size:14px; color:#92400E; font-weight:600;",
-                  "Coming soon – maturity assessments under way"
-                ),
-                tags$p(
-                  style = "margin:3px 0 0 0; font-size:13px; color:#4B5563;",
-                  "This section will be activated once countries complete Community Health Program (CHP) maturity assessments and grant approval for visualising and sharing results."
-                )
-              )
-            ),
-            
-            HTML("
-      <p style='font-size:14px; line-height:1.6; text-align:justify;'>
-        This section will display results from <strong>Community Health Program (CHP) Maturity Assessments</strong> conducted by countries in 
-        collaboration with HeDPAC and partners. The maturity framework provides a structured way to assess governance, financing, workforce, 
-        supplies, service delivery and outcomes for community health programs.
-      </p>
-          ")
-          )
+  #         # 4) CHP MATURITY
+  #         tabPanel(
+  #           title = "CHP Maturity",
+  #           
+  #           div(
+  #             class = "hedpac-title-bar",
+  #             h3("Community Health Program (CHP) Maturity")
+  #           ),
+  #           
+  #           br(),
+  #           h3(
+  #             "About the CHP Maturity Framework",
+  #             style = paste0(
+  #               "color:", hedpac_blue, 
+  #               "; font-weight:bold; margin-top:5px; margin-bottom:10px;"
+  #             )
+  #           ),
+  #           
+  #           HTML("
+  # <p style='font-size:14px; line-height:1.6; text-align:justify;'>
+  # <strong>What:</strong> The Community Health Program (CHP) Maturity Framework is a standardized, evidence-based 
+  # assessment tool used to evaluate the institutionalization and performance of national community health programs. 
+  # It combines a maturity matrix, scoring methodology, and a composite index to assess different dimensions of 
+  # community health systems. The framework generates structured insights that help countries understand the current 
+  # maturity level of their programs and identify areas requiring strengthening.
+  # </p>
+  # 
+  # <p style='font-size:14px; line-height:1.6; text-align:justify;'>
+  # <strong>Why:</strong> The framework helps countries identify policy and implementation gaps, benchmark progress 
+  # against global best practices, and prioritize strategic actions to strengthen community health systems. By 
+  # providing a structured and comparable approach, it supports evidence-based decision making, more efficient 
+  # resource allocation, and measurable improvements in the quality, sustainability, and performance of community 
+  # health service delivery. It also promotes cross-country learning and multisectoral collaboration, recognizing 
+  # that community health outcomes are influenced by sectors such as education, civil service, agriculture, water 
+  # and sanitation, economy, and social protection.
+  # </p>
+  # 
+  # <p style='font-size:14px; line-height:1.6; text-align:justify;'>
+  # <strong>Who:</strong> The CHP Maturity Framework is used by countries, policymakers, ministries of health, civil 
+  # service institutions, and community health program managers, in collaboration with HeDPAC and other technical 
+  # and development partners. The MOH-led assessment process involves inclusive consultations and stakeholder 
+  # validation, including health workers, government institutions, and other relevant sectors.
+  # </p>
+  # 
+  # <p style='font-size:14px; line-height:1.6; text-align:justify;'>
+  # <strong>When:</strong> CHP Maturity Assessments are conducted periodically as part of national community health 
+  # program reviews or reform processes, particularly when countries are planning system strengthening initiatives, 
+  # workforce reforms, or monitoring progress toward universal health coverage (UHC) and stronger primary health 
+  # care systems.
+  # </p>
+  # 
+  # <p style='font-size:14px; line-height:1.6; text-align:justify;'>
+  # <strong>How:</strong> Countries conduct the assessment using the CHP Maturity Framework tools, which include 
+  # structured maturity levels, indicators, and scoring criteria. The process involves evidence review, 
+  # multi-stakeholder consultations, and validation workshops to ensure accuracy and country ownership. Results are 
+  # analyzed through the scoring system and composite index, producing a clear maturity profile that guides 
+  # strategic planning, policy reforms, and program improvement efforts.
+  # </p>
+  # "),
+  #           
+  #           br(),
+  #           
+  #           div(
+  #             style = "
+  #     border-radius:8px;
+  #     padding:10px 14px;
+  #     background-color:#FDF8EE;
+  #     border-left:4px solid #C2A759;
+  #     display:flex;
+  #     align-items:flex-start;
+  #     gap:10px;
+  #     margin-bottom:18px;
+  #   ",
+  #             tags$span(
+  #               icon("hourglass-half"),
+  #               style = "font-size:16px; color:#C2A759; margin-top:2px;"
+  #             ),
+  #             tags$div(
+  #               tags$p(
+  #                 style = "margin:0; font-size:14px; color:#92400E; font-weight:600;",
+  #                 "Coming soon – maturity assessments under way"
+  #               ),
+  #               tags$p(
+  #                 style = "margin:3px 0 0 0; font-size:13px; color:#4B5563;",
+  #                 "This section will be activated once countries complete Community Health Program (CHP) maturity assessments and grant approval for visualising and sharing results."
+  #               )
+  #             )
+  #           ),
+  #           
+  #           HTML("
+  #     <p style='font-size:14px; line-height:1.6; text-align:justify;'>
+  #       This section will display results from <strong>Community Health Program (CHP) Maturity Assessments</strong> conducted by countries in 
+  #       collaboration with HeDPAC and partners. The maturity framework provides a structured way to assess governance, financing, workforce, 
+  #       supplies, service delivery and outcomes for community health programs.
+  #     </p>
+  #         ")
+  #         )
         )
       )
     )
