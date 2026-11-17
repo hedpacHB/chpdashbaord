@@ -1717,7 +1717,7 @@ server <- function(input, output, session) {
           leaflet(options = leafletOptions(
             minZoom = center$zoom, maxZoom = center$zoom
           )) %>%
-            addProviderTiles("CartoDB.Positron") %>%
+            addProviderTiles("Esri.WorldGrayCanvas") %>%
             setView(lng = center$lng, lat = center$lat, zoom = center$zoom) %>%
             addControl("No policy data for selected region", position = "topright")
         )
@@ -1759,7 +1759,7 @@ server <- function(input, output, session) {
           maxZoom = center$zoom
         )
       ) %>%
-        addProviderTiles("CartoDB.Positron") %>%
+        addProviderTiles("Esri.WorldGrayCanvas") %>%
         setView(lng = center$lng, lat = center$lat, zoom = center$zoom) %>%
         addPolygons(
           fillColor   = ~pal(Policy_status),
@@ -1839,7 +1839,7 @@ server <- function(input, output, session) {
           leaflet(options = leafletOptions(
             minZoom = center$zoom, maxZoom = center$zoom
           )) %>%
-            addProviderTiles("CartoDB.Positron") %>%
+            addProviderTiles("Esri.WorldGrayCanvas") %>%
             setView(lng = center$lng, lat = center$lat, zoom = center$zoom) %>%
             addControl("No training data for selected region", position = "topright")
         )
@@ -1879,7 +1879,7 @@ server <- function(input, output, session) {
           maxZoom = center$zoom
         )
       ) %>%
-        addProviderTiles("CartoDB.Positron") %>%
+        addProviderTiles("Esri.WorldGrayCanvas") %>%
         setView(lng = center$lng, lat = center$lat, zoom = center$zoom) %>%
         addPolygons(
           fillColor   = ~pal(Training_pct),
@@ -1946,7 +1946,7 @@ server <- function(input, output, session) {
     if (nrow(chws) == 0) {
       return(
         leaflet() %>%
-          addProviderTiles("CartoDB.Positron") %>%
+          addProviderTiles("Esri.WorldGrayCanvas") %>%
           addControl("No CHW numbers data for selected region", position = "topright")
       )
     }
@@ -1985,7 +1985,7 @@ server <- function(input, output, session) {
         maxZoom = center$zoom
       )
     ) %>%
-      addProviderTiles("CartoDB.Positron") %>%
+      addProviderTiles("Esri.WorldGrayCanvas") %>%
       setView(lng = center$lng, lat = center$lat, zoom = center$zoom) %>%
       addPolygons(
         fillColor   = ~pal(CHWs_total),
