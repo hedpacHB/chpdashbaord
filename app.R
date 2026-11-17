@@ -2003,7 +2003,7 @@ server <- function(input, output, session) {
         opacity = 0.9
       )
     
-    # 🔵 SINGLE LABEL ONLY FOR SELECTED COUNTRY (name + number of CHWs)
+    # 🔵 SINGLE LABEl ONLY FOR SELECTED COUNTRY (name + number of CHWs)
     selected_row <- map_df %>%
       dplyr::filter(name_long == sel,
                     !is.na(CHWs_total),
